@@ -35,6 +35,6 @@ public class Speaker {
 
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "speaker-uuid")
+    @OneToMany
     private List<Social> socials;
 }

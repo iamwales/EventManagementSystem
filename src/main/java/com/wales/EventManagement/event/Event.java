@@ -1,13 +1,11 @@
 package com.wales.EventManagement.event;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.wales.EventManagement.session.Session;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,4 +36,6 @@ public class Event {
     private String website;
 
     // SESSIONS
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
+    private Set<Session> sessions = new HashSet<>();
 }
