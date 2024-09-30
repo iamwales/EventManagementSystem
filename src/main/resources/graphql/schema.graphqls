@@ -1,0 +1,67 @@
+scalar Date @specifiedBy(url:"https://tools.ietf.org/html/rfc3339")
+scalar Url @specifiedBy(url:"https://www.w3.org/Addressing/URL/url-spec.txt")
+
+type Query {
+    events: [Event]
+    event(uuid: ID!): Event
+    speakers: [Speaker]
+    speaker(uuid: ID!): Speaker
+    sessions: [Session]!
+    session(uuid: ID!): Session
+}
+
+type Event {
+    uuid: ID!
+    name: String!
+    description: String!
+    startDate: Date!
+    endDate: Date!
+    cfpStartDate: Date!
+    cfpEndDate: Date!
+    location: String
+    website: Url
+    sessions(first: Int,last: Int,before: String,after: String): SessionConnection
+}
+
+type SessionConnection {
+    uuid: ID!
+    first: Int!
+    last: Int!
+    before: String!
+    after: String
+}
+
+type Session {
+    uuid: ID!
+    title: String!
+    description: String!
+    tags: [Tag]
+    level: String!
+}
+
+type Tag {
+    uuid: ID!
+    name: String!
+}
+
+type Speaker {
+    uuid: ID!
+    name: String!
+    title: String!
+    company: String!
+    gender: Gender!
+    country: String!
+    email: String!
+    phoneNumber: String!
+    twitter: String!
+}
+
+enum Gender {
+    MALE,
+    FEMALE,
+    NON_BINARY
+}
+
+
+
+
