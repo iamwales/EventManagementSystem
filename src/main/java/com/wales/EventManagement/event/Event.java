@@ -1,6 +1,8 @@
 package com.wales.EventManagement.event;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
@@ -16,6 +18,7 @@ import java.util.UUID;
 @Entity
 public class Event {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
 
     private String name;

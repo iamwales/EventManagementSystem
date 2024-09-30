@@ -1,32 +1,27 @@
-package com.wales.EventManagement.session;
+package com.wales.EventManagement.speaker;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.UUID;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Setter
-@Builder
+@Getter
 @ToString
 @Entity
-public class Session {
+public class Social {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
 
-    private String title;
+    private String name;
 
-    private String description;
+    private String url;
 
-    @Enumerated(EnumType.STRING)
-    private Level level;
-
-    // TAGS
-
-    // EVENT
+    @ManyToOne()
+    @JoinColumn(name = "speaker_uuid")
+    private Speaker speaker;
 }
