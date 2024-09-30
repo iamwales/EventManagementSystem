@@ -1,4 +1,4 @@
-package com.wales.EventManagement.session;
+package com.wales.EventManagement.speaker;
 
 import lombok.AllArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -11,17 +11,18 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @Controller
-public class SessionController {
-    private final SessionRepository sessionRepository;
+public class SpeakerController {
+
+    private final SpeakerRepository speakerRepository;
 
     @QueryMapping
-    List<Session> sessions() {
-        return sessionRepository.findAll();
+    List<Speaker> speakers() {
+        return speakerRepository.findAll();
     }
 
     @QueryMapping
-    Optional<Session> session(@Argument UUID uuid) {
-        return sessionRepository.findById(uuid);
+    Optional<Speaker> speaker(@Argument UUID uuid) {
+        return speakerRepository.findById(uuid);
     }
 
 }

@@ -1,11 +1,11 @@
 package com.wales.EventManagement.session;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import com.wales.EventManagement.event.Event;
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 
@@ -19,6 +19,7 @@ import java.util.UUID;
 public class Session {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
 
     private String title;
@@ -29,6 +30,10 @@ public class Session {
     private Level level;
 
     // TAGS
+    @OneToMany
+    private Set<Tag> tags = new HashSet<>();
 
     // EVENT
+    @ManyToOne
+    private Event event;
 }
