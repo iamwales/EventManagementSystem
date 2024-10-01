@@ -24,4 +24,9 @@ public class Social {
     @ManyToOne()
     @JoinColumn(name = "speaker_uuid")
     private Speaker speaker;
+
+    public Social(String name, String url) {
+        this.name = name;
+        this.url = url;
+    }
 }

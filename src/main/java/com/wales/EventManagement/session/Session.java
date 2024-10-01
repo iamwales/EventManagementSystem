@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -24,6 +25,7 @@ public class Session {
 
     private String title;
 
+    @Column(length = 1000)
     private String description;
 
     @Enumerated(EnumType.STRING)
@@ -31,9 +33,17 @@ public class Session {
 
     // TAGS
     @OneToMany
-    private Set<Tag> tags = new HashSet<>();
+    private List<Tag> tags;
 
     // EVENT
     @ManyToOne
     private Event event;
+
+    public Session(String title, String description, Level level, List<Tag> tags, Event event) {
+        this.title = title;
+        this.description = description;
+        this.level = level;
+        this.tags = tags;
+        this.event = event;
+    }
 }

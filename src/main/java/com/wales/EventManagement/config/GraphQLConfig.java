@@ -1,5 +1,6 @@
 package com.wales.EventManagement.config;
 
+import com.github.javafaker.Faker;
 import graphql.scalars.ExtendedScalars;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,5 +13,10 @@ public class GraphQLConfig {
     public RuntimeWiringConfigurer runtimeWiringConfigurer() {
         return wiringBuilder -> wiringBuilder.scalar(ExtendedScalars.Date)
                 .scalar(ExtendedScalars.Url);
+    }
+
+    @Bean
+    public Faker faker() {
+        return new Faker();
     }
 }
