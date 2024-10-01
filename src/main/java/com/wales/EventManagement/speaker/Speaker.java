@@ -37,4 +37,15 @@ public class Speaker {
 
     @OneToMany
     private List<Social> socials;
+
+    public Speaker(String name, String title, String company, Gender gender, String country, String email, String phoneNumber, List<Social> socials) {
+        this.name = name;
+        this.title = title;
+        this.company = company;
+        this.gender = gender;
+        this.country = country;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.socials = socials;
+    }
 }

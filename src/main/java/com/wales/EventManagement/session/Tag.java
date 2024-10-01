@@ -21,4 +21,8 @@ public class Tag {
     private UUID uuid;
 
     private String name;
+
+    public Tag(String name) {
+        this.name = name;
+    }
 }

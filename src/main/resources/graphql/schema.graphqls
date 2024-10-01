@@ -1,6 +1,17 @@
 scalar Date @specifiedBy(url:"https://tools.ietf.org/html/rfc3339")
 scalar Url @specifiedBy(url:"https://www.w3.org/Addressing/URL/url-spec.txt")
 
+#type Mutation {
+#    createEvent(name: String,
+#        description: String,
+#        startDate: Date,
+#        endDate: Date,
+#        cfpStartDate: Date,
+#        cfpEndDate: Date,
+#        location: String,
+#        website: Url): Event
+#}
+
 type Query {
     events: [Event]
     event(uuid: ID!): Event
@@ -23,13 +34,6 @@ type Event {
     sessions(first: Int,last: Int,before: String,after: String): SessionConnection
 }
 
-type SessionConnection {
-    uuid: ID!
-    first: Int!
-    last: Int!
-    before: String!
-    after: String
-}
 
 type Session {
     uuid: ID!
