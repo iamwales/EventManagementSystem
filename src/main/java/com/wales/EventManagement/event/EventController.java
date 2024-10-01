@@ -28,7 +28,7 @@ public class EventController {
     private final EventService eventService;
 
     @MutationMapping
-    EventResponse createEvent(EventRequest eventRequest) {
+    EventResponse createEvent(@Argument EventRequest eventRequest) {
         return eventService.createEvent(eventRequest);
     }
 

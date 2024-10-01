@@ -11,10 +11,9 @@ public class EventService {
     private final EventMapper eventMapper;
 
     public EventResponse createEvent(EventRequest eventRequest) {
-        var event = eventRepository.save(eventMapper.toEvent(eventRequest));
+        Event mainEvent = eventMapper.toEvent(eventRequest);
+        var event = eventRepository.save(mainEvent);
 
         return eventMapper.toEventResponse(event);
     }
-
-
 }

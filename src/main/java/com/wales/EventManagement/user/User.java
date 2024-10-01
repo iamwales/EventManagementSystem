@@ -62,8 +62,8 @@ public class User implements UserDetails, Principal {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
-    // This means one user to many books
-    @OneToMany(mappedBy = "owner")
+    // This means one user to many events
+    @OneToMany(mappedBy = "user")
     private List<Event> events;
 
     public String getFullName() {
