@@ -1,5 +1,6 @@
 package com.wales.EventManagement.event;
 
+import com.wales.EventManagement.common.BaseEntity;
 import com.wales.EventManagement.session.Session;
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,11 +15,7 @@ import java.util.*;
 @Getter
 @Setter
 @Entity
-public class Event {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID uuid;
-
+public class Event extends BaseEntity {
     private String name;
 
     @Column(length = 1000)

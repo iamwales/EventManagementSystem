@@ -8,6 +8,7 @@ import org.springframework.data.domain.ScrollPosition;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Window;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.graphql.data.query.ScrollSubrange;
@@ -23,6 +24,13 @@ public class EventController {
 
     private final EventRepository eventRepository;
     private final SessionRepository sessionRepository;
+
+    private final EventService eventService;
+
+    @MutationMapping
+    EventResponse createEvent(EventRequest eventRequest) {
+        return eventService.createEvent(eventRequest);
+    }
 
     @QueryMapping
     List<Event> events() {
