@@ -1,24 +1,23 @@
 package com.wales.EventManagement.event;
 
+import com.wales.EventManagement.common.BaseEntity;
 import com.wales.EventManagement.session.Session;
+import com.wales.EventManagement.user.User;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 import java.util.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 @ToString
 @Getter
 @Setter
 @Entity
-public class Event {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID uuid;
-
+public class Event extends BaseEntity {
     private String name;
 
     @Column(length = 1000)
@@ -39,6 +38,10 @@ public class Event {
     // SESSIONS
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
     private Set<Session> sessions = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_uuid")
+    private User user;
 
     public Event(String name, String description, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime cfpStartDate, LocalDateTime cfpEndDate, String location, String website) {
         this.name = name;
