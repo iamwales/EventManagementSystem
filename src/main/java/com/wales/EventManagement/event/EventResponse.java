@@ -21,10 +21,6 @@ public class EventResponse {
 
     private LocalDateTime endDate;
 
-    private LocalDateTime cfpStartDate;
-
-    private LocalDateTime cfpEndDate;
-
     private String location;
 
     private String website;
