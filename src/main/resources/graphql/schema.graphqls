@@ -2,6 +2,8 @@ scalar Date @specifiedBy(url:"https://tools.ietf.org/html/rfc3339")
 scalar Url @specifiedBy(url:"https://www.w3.org/Addressing/URL/url-spec.txt")
 
 type Mutation {
+    register(username: String!, password: String!): AuthenticationResponse!
+    login(username: String!, password: String!): AuthenticationResponse!
     createEvent(name: String,
         description: String,
         startDate: Date,
@@ -11,6 +13,11 @@ type Mutation {
         location: String,
         website: Url): Event
 }
+
+type AuthenticationResponse {
+    token: String
+}
+
 
 type Query {
     events: [Event]

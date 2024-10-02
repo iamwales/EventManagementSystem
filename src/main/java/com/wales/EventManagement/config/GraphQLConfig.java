@@ -14,9 +14,4 @@ public class GraphQLConfig {
         return wiringBuilder -> wiringBuilder.scalar(ExtendedScalars.Date)
                 .scalar(ExtendedScalars.Url);
     }
-
-    @Bean
-    public Faker faker() {
-        return new Faker();
-    }
 }

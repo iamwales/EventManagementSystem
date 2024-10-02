@@ -39,9 +39,9 @@ public class Event extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "event")
     private Set<Session> sessions = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "user_uuid")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_uuid")
+//    private User user;
 
     public Event(String name, String description, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime cfpStartDate, LocalDateTime cfpEndDate, String location, String website) {
         this.name = name;
@@ -51,6 +51,15 @@ public class Event extends BaseEntity {
         this.endDate = endDate;
         this.cfpStartDate = cfpStartDate;
         this.cfpEndDate = cfpEndDate;
+        this.location = location;
+        this.website = website;
+    }
+
+    public Event(String name, String description, LocalDateTime startDate, LocalDateTime endDate, String location, String website) {
+        this.name = name;
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.location = location;
         this.website = website;
     }

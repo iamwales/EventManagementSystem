@@ -63,8 +63,16 @@ public class User implements UserDetails, Principal {
     private List<Role> roles;
 
     // This means one user to many events
-    @OneToMany(mappedBy = "user")
-    private List<Event> events;
+//    @OneToMany(mappedBy = "user")
+//    private List<Event> events;
+
+
+    public User( String firstname, String lastname, String password, boolean enabled) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.password = password;
+        this.enabled =enabled;
+    }
 
     public String getFullName() {
         return firstname + " " + lastname;
