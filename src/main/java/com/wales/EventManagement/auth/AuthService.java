@@ -25,7 +25,7 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
-    public AuthenticationResponse registerUser(String username, String password) {
+    public AuthenticationResponse registerUser(String username, String password, String firstname, String lastname) {
 
         if (userRepository.findByEmail(username).isPresent()) {
             throw new RuntimeException("Username already exists");
@@ -38,8 +38,8 @@ public class AuthService {
         var user = User.builder()
                 .email(username)
                 .password(passwordEncoder.encode(password))
-                .firstname("Olawale")
-                .lastname("Adeogun")
+                .firstname(firstname)
+                .lastname(lastname)
                 .accountLocked(false)
                 .enabled(true)
                 .roles(List.of(userRole))
