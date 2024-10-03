@@ -13,8 +13,8 @@ public class AuthController {
     private final AuthService authService;
 
     @MutationMapping
-    public AuthenticationResponse register(@Argument String username, @Argument String password) {
-        return authService.registerUser(username, password);
+    public AuthenticationResponse register(@Argument String username, @Argument String password, @Argument String firstname, @Argument String lastname) {
+        return authService.registerUser(username, password, firstname, lastname);
     }
 
     @MutationMapping

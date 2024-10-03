@@ -2,7 +2,7 @@ scalar Date @specifiedBy(url:"https://tools.ietf.org/html/rfc3339")
 scalar Url @specifiedBy(url:"https://www.w3.org/Addressing/URL/url-spec.txt")
 
 type Mutation {
-    register(username: String!, password: String!): AuthenticationResponse!
+    register(username: String!, password: String!, firstname: String!, lastname: String!): AuthenticationResponse!
     login(username: String!, password: String!): AuthenticationResponse!
     createEvent(name: String,
         description: String,
