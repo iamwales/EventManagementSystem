@@ -12,12 +12,17 @@ type Mutation {
         cfpEndDate: Date,
         location: String,
         website: Url): Event
+    createEventStart(name: String!): EventStartResponse
 }
 
 type AuthenticationResponse {
     token: String
 }
 
+type EventStartResponse {
+    uuid: ID!
+    name: String!
+}
 
 type Query {
     events: [Event]

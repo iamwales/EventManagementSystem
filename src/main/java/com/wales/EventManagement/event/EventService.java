@@ -13,12 +13,18 @@ public class EventService {
     public EventResponse createEvent(EventRequest eventRequest) {
         Event mainEvent = eventMapper.toEvent(eventRequest);
 
-    System.out.println("mainEvent "+ mainEvent);
 
         var event = eventRepository.save(mainEvent);
 
-    System.out.println("event "+ event);
 
         return eventMapper.toEventResponse(event);
+    }
+
+    public EventStartResponse createEventStart(String name) {
+        var mainEvent = new Event(name);
+
+        var event = eventRepository.save(mainEvent);
+
+        return eventMapper.toEventStartResponse(event);
     }
 }
