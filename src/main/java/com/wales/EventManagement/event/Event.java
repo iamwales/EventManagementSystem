@@ -43,6 +43,11 @@ public class Event extends BaseEntity {
 //    @JoinColumn(name = "user_uuid")
 //    private User user;
 
+
+    public Event(String name) {
+        this.name = name;
+    }
+
     public Event(String name, String description, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime cfpStartDate, LocalDateTime cfpEndDate, String location, String website) {
         this.name = name;
 

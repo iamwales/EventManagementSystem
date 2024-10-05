@@ -7,4 +7,8 @@ public interface EventMapper {
     EventResponse toEventResponse(Event event);
 
     Event toEvent(EventRequest eventRequest);
+
+
+    EventStartResponse toEventStartResponse(Event event);
+
 }

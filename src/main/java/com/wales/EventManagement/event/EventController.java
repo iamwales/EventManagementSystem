@@ -25,6 +25,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Controller
 @EnableMethodSecurity
+@PreAuthorize("isAuthenticated()")
 public class EventController {
 
     private final EventRepository eventRepository;
@@ -37,16 +38,21 @@ public class EventController {
         return eventService.createEvent(eventRequest);
     }
 
-    @PreAuthorize("isAuthenticated()")
+
+    @MutationMapping
+    EventStartResponse createEventStart(@Argument String name) {
+        return eventService.createEventStart(name);
+    }
+
+//    @PreAuthorize("isAuthenticated()")
     @QueryMapping
     List<Event> events(Authentication connectedUser) {
-    System.out.println("connectedUser " + connectedUser);
 
-    var user = ((User) connectedUser.getPrincipal());
+        var user = ((User) connectedUser.getPrincipal());
 
-    System.out.println("Connected Main User " + user);
+        List<Event> events = eventRepository.findAll();
 
-       return eventRepository.findAll();
+        return events;
     }
 
     @QueryMapping

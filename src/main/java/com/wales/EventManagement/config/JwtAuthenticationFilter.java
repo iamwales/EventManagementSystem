@@ -45,7 +45,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         userEmail = jwtService.extractUsername(jwtToken);
 
-
         /**
          * Checks if the userEmail is null
          * and also checks if the user is authenticated.

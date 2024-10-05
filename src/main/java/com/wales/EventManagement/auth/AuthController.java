@@ -14,6 +14,7 @@ public class AuthController {
 
     @MutationMapping
     public AuthenticationResponse register(@Argument String username, @Argument String password, @Argument String firstname, @Argument String lastname) {
+
         return authService.registerUser(username, password, firstname, lastname);
     }
 
